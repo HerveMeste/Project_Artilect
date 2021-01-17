@@ -1,2 +1,2 @@
-# Hackathon-Artilect-Big-Bro
+Artilect-Big-Bro
 
