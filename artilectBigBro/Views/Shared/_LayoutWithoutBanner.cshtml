@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - artilectBigBro</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light  border-bottom box-shadow p-0">
+            <div class="container-fluid p-3 p-lg-0">
+                <a class="navbar-brand m-0" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/images/ARTILECT.png" style="width:100px" alt="Artilect" /> </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ProjectList">Projets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Tuto">Tutoriel</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Makers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Message" asp-action="Index">ArtiChat</a>
+                        </li>
+                        <li>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Dashboard" asp-action="Index">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Search" asp-action="Search"><i class="fas fa-search" style="color:#f6c4c4"></i></a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container-fluid d-inline-flex justify-content-between">
+            <div class="d-inline-flex">
+                <p>&copy; 2021 - artilectBigBro - </p>
+                <p><a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> </p>
+            </div>
+            <div class="d-flex flex-row  justify-content-between col-3">
+                <p class="ml-2 mr-2">
+                    <a href="https://twitter.com/artilectlab"><i class="fab fa-twitter"></i></a>
+                </p>
+                <p class="ml-2 mr-2">
+                    <a href="https://www.facebook.com/ArtilectFabLabToulouse/"><i class="fab fa-facebook"></i></a>
+                </p>
+                <p class="ml-2 mr-2">
+                    <a href="https://www.instagram.com/artilect_fablab_toulouse/?hl=fr"><i class="fab fa-instagram"></i></a>
+                </p>
+                <p class="ml-2 mr-2">
+                    <a href="https://www.youtube.com/user/fabLabArtilect"><i class="fab fa-youtube"></i></a>
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://kit.fontawesome.com/65454f298e.js" crossorigin="anonymous"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

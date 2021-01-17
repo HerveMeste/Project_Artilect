@@ -1,0 +1,119 @@
+﻿@model Tuple<List<User>, List <Project>>
+
+@{
+    ViewData["Search"] = "Search Page";
+    Layout = "~/Views/Shared/_LayoutWithoutBanner.cshtml";
+}
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col align-self-start"></div>
+        <div class="col align-self-center text-center">
+            <form asp-controller="Search" asp-action="Search" method="get" class="mb-5">
+                <p>
+                    <input type="text" name="SearchString" class="form-control rounded" placeholder="Makers, projets, ..." aria-label="Search"
+                    aria-describedby="search-addon"/>
+                </p>
+                <p class="mt-2">
+                    <input type="submit" value="Rechercher" />
+                </p>
+            </form>
+        </div>
+        <div class="col align-self-end"></div>
+    </div>
+</div>
+<div class="text-center">
+    @if (Model != null)
+    {
+        <table class="table table-bordered mt-2 shadow">
+            <thead>
+                <tr>
+                    <th>
+                        Prénom
+                    </th>
+                    <th>
+                        Nom de Famille
+                    </th>
+                    <th>
+                        Compétence(s)
+                    </th>
+                    <th>
+                        Centre(s) d'intérêt(s)
+                    </th>
+                    <th>
+                        Badge(s)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model.Item1)
+                {
+                    <tr>
+                        <td class="align-middle font-weight-bold">
+                            <a class="my-2 text-decoration-none" asp-area="" asp-controller="User" asp-action="UserProfile" asp-route-UserId="@user.Id" style="color: hotpink">@Html.DisplayFor(modelItem => user.FirstName)</a>
+                        </td>
+                        <td class="align-middle font-weight-bold">
+                            <a class="my-2 text-decoration-none" asp-area="" asp-controller="User" asp-action="UserProfile" asp-route-UserId="@user.Id" style="color: hotpink">@Html.DisplayFor(modelItem => user.LastName)</a>
+                        </td>
+                        <td>
+                            @if (user.Skills != null)
+                            {
+                                @foreach (var skill in user.Skills)
+                                {
+                                    <img src="@skill.ImageUrl" class="w-50" />
+                                    <p>@skill.Name</p>
+                                }
+                            }
+                        </td>
+                        <td>
+                            @if (user.Interests != null)
+                            {
+                                @foreach (var interest in user.Interests)
+                                {
+                                    <img src="@interest.ImageUrl" class="w-50" />
+                                    <p>@interest.Name</p>
+                                }
+                            }
+                        </td>
+                        <td>
+                            @if (user.Skills != null)
+                            {
+                                @foreach (var badge in user.Badges)
+                                {
+                                    <img src="@badge.ImageUrl" class="w-25" />
+                                    <p>@badge.Name</p>
+                                }
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <table class="table table-bordered mt-2 shadow">
+            <thead>
+                <tr>
+                    <th>
+                        Projet
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var project in Model.Item2)
+                {
+                    <tr>
+                        <td class="align-middle font-weight-bold">
+                            <a class="my-2 text-decoration-none" asp-area="" asp-controller="Home" asp-action="Project" asp-route-IdProject="@project.ProjectId" style="color: hotpink">@project.Name</a>
+                        </td>
+                        <td class="align-middle">
+                            @project.Description
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

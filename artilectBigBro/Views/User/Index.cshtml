@@ -1,0 +1,33 @@
+﻿@model List<User>
+@{
+    ViewData["Title"] = "Makers";
+    Layout = "~/Views/Shared/_LayoutWithoutBanner.cshtml";
+}
+
+<div class="row row-cols-1 row-cols-md-3 g-4 pt-4">
+    @foreach (User user in Model)
+    {
+        <div class="card mx-auto mt-auto mb-3 shadow" style="width: 18rem;">
+            <img src="@user.AvatarUrl" class="card-img-top rounded-circle w-75 mx-auto mt-2" alt="Avatar de l'utilisateur">
+            <div class="card-body">
+                <h5 class="card-title text-center">@user.FirstName @user.LastName</h5>
+                <p class="text-center">
+                    @foreach (Skill s in user.Skills)
+                    {
+                        <img src="@s.ImageUrl" class="w-25" />
+                    }
+                    @foreach (Badge b in user.Badges)
+                    {
+                        <img src="@b.ImageUrl" class="w-25" />
+                    }
+                    @foreach (Interest interest in user.Interests)
+                    {
+                        <img src="@interest.ImageUrl" class="w-25" />
+                    }
+                </p>
+                <p class="text-center my-3">Projets réalisé(s) : @user.Projects.Count</p>
+                <p class="text-center"><a class="btn btn-primary my-2" asp-area="" asp-controller="User" asp-action="UserProfile" asp-route-UserId="@user.Id">Voir le profil</a></p>
+            </div>
+        </div>
+    }
+</div>

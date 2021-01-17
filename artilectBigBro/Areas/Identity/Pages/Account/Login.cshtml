@@ -1,0 +1,55 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Connexion";
+    Layout = "~/Views/Shared/_LayoutLoginPage.cshtml";
+}
+
+<div class="d-flex p-0 col-sm-6 m-sm-auto py-3 justify-content-center align-items-center logo-login">
+    <a asp-area="" asp-controller="Home" asp-action="Index"> <img src="~/images/ARTILECT.png" class="img-fluid img-thumbnail" width="100" /></a>
+    <p class="mx-2 login-artilec">Artilect Project</p>
+</div>
+<div class="row d-flex flex-column align-content-center">
+    <h4 class="form-login rounded-top m-0 py-2 text-center">@ViewData["Title"]</h4>
+    <div class="border-top-0 px-4 rounded-bottom form-login col-sm-6">
+        <section>
+            <form id="account" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input asp-for="Input.Email" class="form-control" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Mot de passe</label>
+                    <input asp-for="Input.Password" class="form-control" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input asp-for="Input.RememberMe" />
+                            Se souvenir de moi
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary border-0">Connexion</button>
+                </div>
+                <div class="form-group">
+                    <p>
+                        <a id="forgot-password" asp-page="./ForgotPassword">Mot de passe oublié ?</a>
+                    </p>
+                    <p>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Inscription</a>
+                    </p>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

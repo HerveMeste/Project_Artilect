@@ -1,0 +1,102 @@
+﻿@model User
+@{
+    ViewData["Title"] = "UserProfile";
+    Layout = "~/Views/Shared/_LayoutWithoutBanner.cshtml";
+}
+
+@if (Model == null)
+{
+    <section class="text-center m-auto" >
+
+        <h2>Profil non complété</h2>
+    </section>
+}
+else
+{
+
+
+<section class="container-fluid d-flex flex-column-reverse flex-lg-row-reverse m-auto pt-3">
+    <aside class="p-3 col-12 col-lg-4" >
+        <div class="border shadow p-4">
+
+
+            @if (Model != null)
+            {
+                    <h2 class="text-center">Mes projets:</h2>
+
+                @foreach (Project project in Model.Projects)
+                {
+                    <div class="card m-3" >
+                        <img class="card-img-top" src="/images/ender3.jpg" alt="project image">
+                        <div class="card-body">
+                            <h5 class="card-title">@project.Name</h5>
+                            <div class="d-flex justify-content-between mb-3">
+                                <ul class="list-group " style="list-style:none">
+
+                                    <li class="">
+                                        <p style="width:100%">
+                                            <img src="~/images/badgesMetier/automatismeRobotique.png" alt="" style="height:50px; " />
+                                            automatisme robotique
+                                        </p>
+                                    </li>
+                                    <li class="">
+                                        <img src="~/images/badgesMetier/chaudronnerieSoudage.png" alt="" style="height:50px; " />
+                                        chaudronnerie soudage
+                                    </li>
+                                    <li class="">
+                                        <img src="~/images/badgesMetier/electronique.png" alt="" style="height:50px; " />
+                                        electronique
+                                    </li>
+                                    <li class="">
+                                        <img src="~/images/badgesMetier/usinage.png" alt="" style="height:50px; " />
+                                        usinage
+                                    </li>
+                                </ul>
+                                <div>
+                                    <img src="@project.ImageUrl" style="width:100px;" />
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <a class="btn " style="background-color:#f6c4c4" asp-area="" asp-controller="Home" asp-action="Project" asp-route-IdProject="@project.ProjectId">Voir ce projet</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </aside>
+    @if (Model != null)
+    {
+        <article class="col-12 col-lg-8" >
+            <div class="d-flex flex-row border m-3 p-3  shadow  text-center" style="background-color:rgba(0,0,0,0.4)">
+                <img src="/images/profil/loginBlack.png" alt="Jean-michel Drone" style="height:100px; border-radius:50%" class="m-2" />
+                <div class="m-auto">
+                    <h3 style="color:#f6c4c4"> @Model.FirstName  @Model.LastName</h3>
+                </div>
+            </div>
+
+            <div class="border m-3 p-4 shadow text-center">
+                <h3 class="text-center">Mes compétences:</h3>
+                @foreach(var badge in Model.Badges)
+                {
+                    <img src="@badge.ImageUrl" style="width:150px" />
+
+                }
+            </div>
+            <div class="border m-3 p-4 shadow text-center">
+                <h3 class="text-center">Mes centres d'intêrets:</h3>
+                @foreach (var interet in Model.Interests)
+                {
+                    <img class="m-auto" src=" @interet.ImageUrl" style="width:150px" />
+
+                }
+            </div>
+            <div class="text-center">
+                <a class="btn " style="background-color:#f6c4c4"  href="mailto:@Model.Email">Me contacter</a>
+
+            </div>
+        </article>
+    }
+</section>
+}

@@ -1,0 +1,75 @@
+﻿@model Project
+@{
+    ViewData["Title"] = "Project";
+    Layout = "~/Views/Shared/_LayoutWithoutBanner.cshtml";
+}
+<div class="container-fluid p-0 " style="background-image: url(https://wild.milhie.fr/imagesArtilect/banniereFabLab.jpg);
+        background-color: rgba(0,0,0,0.3);
+        height: 500px;
+        background-size: contain">
+    <div class="" style="height:100%; width:100%; background-color: rgba(0,0,0,0.4);">
+        <br/>
+        <h1 class="text-center p-3"  style="color:white"> @Model.Name </h1>
+        <p class="text-center p-3 w-lg-50 m-auto" style="color:white"><br /><br /><br />" @Model.Description</p>
+    </div>
+</div>
+<section class="container-fluid">
+    <div class="text-center d-flex flex-column flex-lg-row justify-content-center m-4">
+        <h3 class="m-auto m-5 p-5" style="text-decoration:underline">Compétences requises:</h3>
+        <div class="text-center">
+           <img src="~/images/badgesMetier/automatismeRobotique.png" alt="" title="automatisme robotique" style="height:100px; " />
+            <img src="~/images/badgesMetier/chaudronnerieSoudage.png" alt="" style="height:100px; " />
+            <img src="~/images/badgesMetier/concepIndus.png" alt="" style="height:100px; " />
+            <img src="~/images/badgesMetier/electronique.png" alt="" style="height:100px; " />
+            <img src="~/images/badgesMetier/electrotechnique.png" alt="" style="height:100px;" />
+            <img src="~/images/badgesMetier/maintenance.png" alt="" style="height:100px;" />
+            <img src="~/images/badgesMetier/usinage.png" alt="" style="height:100px; " />
+        </div>
+    </div>
+    <section class="container-fluid p-0 d-flex flex-column-reverse flex-lg-row">
+        <aside class="container-fluid  m-auto  p-0 shadow">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">Machine principale:</h3>
+                </div>
+                <img class="card-img-top" src="/images/ender3.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Endler 3 </h5>
+                </div>
+            </div>
+        </aside>
+        <article class="border m-3 shadow ">
+            <div class="text-right m-4 d-flex justify-content-center flex-column flex-lg-row">
+                <h3 class="m-3 text-center " style="text-decoration:underline">Participants:</h3>
+              
+                <div class="text-center">
+                    <a href="#" title="Jean-Michel Drone">
+                        <img src="/images/profil/loginBlack.png" alt="Jean-michel Drone" style="height:150px; border-radius:50%" />
+                    </a>
+                    <a href="#" title="Jean-Michel Fraise">
+                        <img src="/images/profil/loginIron.png" alt="Jean-michel Fraise" style="height:150px; border-radius:50%" />
+                    </a>
+                    <a href="#" title="Jean-Michel Laser">
+                        <img src="/images/profil/loginGroot.png" alt="Jean-michel Laser" style="height:150px; border-radius:50%" />
+                    </a>
+                    <a href="#" title="Jean-Michel Brode">
+                        <img src="/images/profil/loginHulk.png" alt="Jean-michel Brode" style="height:150px; border-radius:50%" />
+                    </a>
+                    <a href="#" title="Jean-Michel Electro">
+                        <img src="/images/profil/loginSpider.png" alt="Jean-michel Electro" style="height:150px; border-radius:50%" />
+                    </a>
+                </div>
+            </div>
+            <div class="container-fluid ">
+                <p>
+                    @Model.Description
+                 </p>
+                <div class="m-auto d-flex justify-content-around">
+                        <button type="button" class="btn  text-center m-3 " style="background-color:#f6c4c4"><a asp-area="" asp-controller="Message" asp-action="Index" style="color:black">Accéder au chat</a></button>
+                        <button type="button" class="btn  text-center m-3 " style="background-color:#f6c4c4"><a href="mailto:drone@mail.fr" style="color:black">Contacter le porteur de projet</a></button>
+                </div>
+            </div>
+        </article>
+    </section>
+    <p>Date de démarrage: @Model.Date</p>
+</section>

@@ -1,0 +1,49 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Inscription";
+    Layout = "~/Views/Shared/_LayoutLoginPage.cshtml";
+}
+
+<div class="d-flex p-0 col-sm-6 m-sm-auto py-3 justify-content-center align-items-center logo-login">
+   <a asp-area="" asp-controller="Home" asp-action="Index"> <img src="~/images/ARTILECT.png" class="img-fluid img-thumbnail" width="100" /></a>
+    <p class="mx-2 login-artilec">Artilect Project</p>
+</div>
+<div class="border rounded d-flex flex-column align-content-center form-register col-sm-6 m-auto">
+    <div class="p-4">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h4 class="text-center">@ViewData["Title"]</h4>
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label>Nom</label>
+                <input asp-for="Input.LastName" class="form-control" />
+                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Prénom</label>
+                <input asp-for="Input.FirstName" class="form-control" />
+                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input asp-for="Input.Email" class="form-control" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Mot de Passe</label>
+                <input asp-for="Input.Password" class="form-control" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Confirmation mot de passe</label>
+                <input asp-for="Input.ConfirmPassword" class="form-control" />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary border-0">S'enregistrer</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
